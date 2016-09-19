@@ -1,0 +1,7 @@
+ofxGui
+ofxKinect
+ofxKinectForWindows2
+ofxOsc
+ofxRSSDKv2
+ofxTimer
+ofxXmlSettings

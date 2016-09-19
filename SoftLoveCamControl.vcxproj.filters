@@ -1,0 +1,504 @@
+<?xml version="1.0"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup>
+		<ClCompile Include="src\ofApp.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="src\main.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxBaseGui.cpp">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxButton.cpp">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxGuiGroup.cpp">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxLabel.cpp">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxPanel.cpp">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxSlider.cpp">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxSliderGroup.cpp">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxToggle.cpp">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\src\extra\ofxKinectExtras.cpp">
+			<Filter>addons\ofxKinect\src\extra</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\src\ofxKinect.cpp">
+			<Filter>addons\ofxKinect\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0\failguard.cpp">
+			<Filter>addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0\libusbemu.cpp">
+			<Filter>addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\audio.c">
+			<Filter>addons\ofxKinect\libs\libfreenect\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\cameras.c">
+			<Filter>addons\ofxKinect\libs\libfreenect\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\core.c">
+			<Filter>addons\ofxKinect\libs\libfreenect\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\flags.c">
+			<Filter>addons\ofxKinect\libs\libfreenect\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\keep_alive.c">
+			<Filter>addons\ofxKinect\libs\libfreenect\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\loader.c">
+			<Filter>addons\ofxKinect\libs\libfreenect\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\registration.c">
+			<Filter>addons\ofxKinect\libs\libfreenect\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\tilt.c">
+			<Filter>addons\ofxKinect\libs\libfreenect\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\usb_libusb10.c">
+			<Filter>addons\ofxKinect\libs\libfreenect\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0\failguard.cpp">
+			<Filter>other</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0\libusbemu.cpp">
+			<Filter>other</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data\Body.cpp">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data\Joint.cpp">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Device.cpp">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\BaseImage.cpp">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Body.cpp">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\BodyIndex.cpp">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Color.cpp">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Depth.cpp">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Infrared.cpp">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\LongExposureInfraRed.cpp">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Utils.cpp">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src\ofxOscBundle.cpp">
+			<Filter>addons\ofxOsc\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src\ofxOscMessage.cpp">
+			<Filter>addons\ofxOsc\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src\ofxOscParameterSync.cpp">
+			<Filter>addons\ofxOsc\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src\ofxOscReceiver.cpp">
+			<Filter>addons\ofxOsc\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src\ofxOscSender.cpp">
+			<Filter>addons\ofxOsc\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.cpp">
+			<Filter>addons\ofxOsc\libs\oscpack\src\ip</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip\win32\NetworkingUtils.cpp">
+			<Filter>addons\ofxOsc\libs\oscpack\src\ip\win32</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip\win32\UdpSocket.cpp">
+			<Filter>addons\ofxOsc\libs\oscpack\src\ip\win32</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.cpp">
+			<Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.cpp">
+			<Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.cpp">
+			<Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp">
+			<Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxRSSDKv2\src\ofxRSSDKv2.cpp">
+			<Filter>addons\ofxRSSDKv2\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxTimer\src\ofxTimer.cpp">
+			<Filter>addons\ofxTimer\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxXmlSettings\src\ofxXmlSettings.cpp">
+			<Filter>addons\ofxXmlSettings\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxXmlSettings\libs\tinyxml.cpp">
+			<Filter>addons\ofxXmlSettings\libs</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxXmlSettings\libs\tinyxmlerror.cpp">
+			<Filter>addons\ofxXmlSettings\libs</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxXmlSettings\libs\tinyxmlparser.cpp">
+			<Filter>addons\ofxXmlSettings\libs</Filter>
+		</ClCompile>
+	</ItemGroup>
+	<ItemGroup>
+		<Filter Include="src">
+			<UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons">
+			<UniqueIdentifier>{71834F65-F3A9-211E-73B8-DC85}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxGui">
+			<UniqueIdentifier>{4F2A59AF-5F4E-704B-D067-EC13}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxGui\src">
+			<UniqueIdentifier>{645E9533-4DCD-6179-1CDF-CB65}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinect">
+			<UniqueIdentifier>{B7F05916-2DAA-8604-92E8-9A28}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinect\src">
+			<UniqueIdentifier>{C16604A1-D9F2-E615-4352-057F}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinect\src\extra">
+			<UniqueIdentifier>{7EB153FE-B71B-8161-D6DE-947F}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinect\libs">
+			<UniqueIdentifier>{3BE4DDBD-E9EF-0189-E5FD-4477}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinect\libs\libfreenect">
+			<UniqueIdentifier>{6416D445-F422-712E-EDA0-F45E}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinect\libs\libfreenect\include">
+			<UniqueIdentifier>{F7A2459D-BD30-38D3-05BB-4653}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinect\libs\libfreenect\platform">
+			<UniqueIdentifier>{7103C6E1-7CB0-0812-CF4A-0C3F}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinect\libs\libfreenect\platform\windows">
+			<UniqueIdentifier>{6FC8E074-DEF7-EC60-8276-5D23}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu">
+			<UniqueIdentifier>{BA4C2EF6-D0B5-7776-4EAC-8747}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0">
+			<UniqueIdentifier>{3454A2E9-B42D-4841-319D-5EC4}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinect\libs\libfreenect\src">
+			<UniqueIdentifier>{62D6194F-F881-A1EE-EF63-07E8}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinect\libs\libusb-1.0">
+			<UniqueIdentifier>{5838B809-7FFE-7F4F-F59D-CD6F}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinect\libs\libusb-1.0\include">
+			<UniqueIdentifier>{E7C89560-D6AC-0A54-F045-7C6A}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinect\libs\libusb-1.0\include\libusb-1.0">
+			<UniqueIdentifier>{18315E5D-B960-517E-8B9F-6870}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinect\libs\libusb-win32">
+			<UniqueIdentifier>{8A8ECFF4-1224-885A-A8CA-E99F}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinect\libs\libusb-win32\include">
+			<UniqueIdentifier>{D1AFEAD3-991A-EAD4-639C-4098}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="other">
+			<UniqueIdentifier>{A2230F47-9F6B-908F-FF0E-E006}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinectForWindows2">
+			<UniqueIdentifier>{79EE9CEE-5877-E1B3-C373-D5C8}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinectForWindows2\src">
+			<UniqueIdentifier>{BBA641E3-A9C6-8646-2A06-7A9D}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinectForWindows2\src\ofxKinectForWindows2">
+			<UniqueIdentifier>{849A6419-451E-EB51-E82D-5D04}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data">
+			<UniqueIdentifier>{D3FA8E7E-7250-B64E-BCC8-522E}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source">
+			<UniqueIdentifier>{D8ABF3AE-C83C-4B28-80F0-8B6D}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxOsc">
+			<UniqueIdentifier>{D91DCA33-6E5D-4481-2AEC-9FBB}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxOsc\src">
+			<UniqueIdentifier>{B9DD339A-D93D-92A1-0A2F-4B41}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxOsc\libs">
+			<UniqueIdentifier>{99ECA1D9-873F-4622-8FC0-FC7B}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxOsc\libs\oscpack">
+			<UniqueIdentifier>{D3A98534-1602-4FEF-57A6-6593}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxOsc\libs\oscpack\src">
+			<UniqueIdentifier>{BFB5BB47-98C8-BBCB-3066-1046}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxOsc\libs\oscpack\src\ip">
+			<UniqueIdentifier>{5A029128-EB41-95C5-CBC0-CDED}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxOsc\libs\oscpack\src\ip\win32">
+			<UniqueIdentifier>{79DFDFE2-400B-8654-3675-01A3}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxOsc\libs\oscpack\src\osc">
+			<UniqueIdentifier>{EDACB89C-9768-9551-4D41-B590}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxRSSDKv2">
+			<UniqueIdentifier>{1E120560-DD3E-DF55-A557-25AC}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxRSSDKv2\src">
+			<UniqueIdentifier>{EE625D61-2A99-A5C4-C9BF-767C}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxTimer">
+			<UniqueIdentifier>{5A3E9491-A5B2-CF5E-6B24-109A}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxTimer\src">
+			<UniqueIdentifier>{B4946CF9-64FE-8E6A-9F2E-746E}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxXmlSettings">
+			<UniqueIdentifier>{877F005D-13E6-0592-1D97-F2E3}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxXmlSettings\src">
+			<UniqueIdentifier>{CCB2AC63-49D2-977C-CFE8-AEAD}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxXmlSettings\libs">
+			<UniqueIdentifier>{687714A8-1662-FA1C-261F-50F0}</UniqueIdentifier>
+		</Filter>
+	</ItemGroup>
+	<ItemGroup>
+		<ClInclude Include="src\ofApp.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxBaseGui.h">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxButton.h">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxGui.h">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxGuiGroup.h">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxLabel.h">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxPanel.h">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxSlider.h">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxSliderGroup.h">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxToggle.h">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\src\extra\ofxKinectExtras.h">
+			<Filter>addons\ofxKinect\src\extra</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\src\ofxBase3DVideo.h">
+			<Filter>addons\ofxKinect\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\src\ofxKinect.h">
+			<Filter>addons\ofxKinect\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\include\libfreenect.h">
+			<Filter>addons\ofxKinect\libs\libfreenect\include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\include\libfreenect_audio.h">
+			<Filter>addons\ofxKinect\libs\libfreenect\include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\include\libfreenect_registration.h">
+			<Filter>addons\ofxKinect\libs\libfreenect\include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0\failguard.h">
+			<Filter>addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0\libusb.h">
+			<Filter>addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0\libusbemu_internal.h">
+			<Filter>addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0\libusbemu_threads.h">
+			<Filter>addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0\libusbemu_threads_win32.h">
+			<Filter>addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\stdbool.h">
+			<Filter>addons\ofxKinect\libs\libfreenect\platform\windows</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\unistd.h">
+			<Filter>addons\ofxKinect\libs\libfreenect\platform\windows</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\cameras.h">
+			<Filter>addons\ofxKinect\libs\libfreenect\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\flags.h">
+			<Filter>addons\ofxKinect\libs\libfreenect\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\freenect_internal.h">
+			<Filter>addons\ofxKinect\libs\libfreenect\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\keep_alive.h">
+			<Filter>addons\ofxKinect\libs\libfreenect\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\loader.h">
+			<Filter>addons\ofxKinect\libs\libfreenect\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\registration.h">
+			<Filter>addons\ofxKinect\libs\libfreenect\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\usb_libusb10.h">
+			<Filter>addons\ofxKinect\libs\libfreenect\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-1.0\include\libusb-1.0\libusb.h">
+			<Filter>addons\ofxKinect\libs\libusb-1.0\include\libusb-1.0</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\include\lusb0_usb.h">
+			<Filter>addons\ofxKinect\libs\libusb-win32\include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data\Body.h">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data\Joint.h">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Device.h">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Base.h">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\BaseImage.h">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Body.h">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\BodyIndex.h">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Color.h">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Depth.h">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Infrared.h">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\LongExposureInfrared.h">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Utils.h">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2.h">
+			<Filter>addons\ofxKinectForWindows2\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src\ofxOsc.h">
+			<Filter>addons\ofxOsc\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src\ofxOscArg.h">
+			<Filter>addons\ofxOsc\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src\ofxOscBundle.h">
+			<Filter>addons\ofxOsc\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src\ofxOscMessage.h">
+			<Filter>addons\ofxOsc\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src\ofxOscParameterSync.h">
+			<Filter>addons\ofxOsc\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src\ofxOscReceiver.h">
+			<Filter>addons\ofxOsc\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src\ofxOscSender.h">
+			<Filter>addons\ofxOsc\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.h">
+			<Filter>addons\ofxOsc\libs\oscpack\src\ip</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip\NetworkingUtils.h">
+			<Filter>addons\ofxOsc\libs\oscpack\src\ip</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip\PacketListener.h">
+			<Filter>addons\ofxOsc\libs\oscpack\src\ip</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip\TimerListener.h">
+			<Filter>addons\ofxOsc\libs\oscpack\src\ip</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip\UdpSocket.h">
+			<Filter>addons\ofxOsc\libs\oscpack\src\ip</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc\MessageMappingOscPacketListener.h">
+			<Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc\OscException.h">
+			<Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc\OscHostEndianness.h">
+			<Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.h">
+			<Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc\OscPacketListener.h">
+			<Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.h">
+			<Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.h">
+			<Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.h">
+			<Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxRSSDKv2\src\ofxRSSDKv2.h">
+			<Filter>addons\ofxRSSDKv2\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxTimer\src\ofxTimer.h">
+			<Filter>addons\ofxTimer\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxXmlSettings\src\ofxXmlSettings.h">
+			<Filter>addons\ofxXmlSettings\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxXmlSettings\libs\tinyxml.h">
+			<Filter>addons\ofxXmlSettings\libs</Filter>
+		</ClInclude>
+	</ItemGroup>
+	<ItemGroup>
+		<ResourceCompile Include="icon.rc" />
+	</ItemGroup>
+</Project>

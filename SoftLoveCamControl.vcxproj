@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7FD42DF7-442E-479A-BA76-D0022F99702A}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>SoftLoveCamControl</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="../../../../../../../Softwares/openFrameworks 0.9.3/libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="../../../../../../../Softwares/openFrameworks 0.9.3/libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="../../../../../../../Softwares/openFrameworks 0.9.3/libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="../../../../../../../Softwares/openFrameworks 0.9.3/libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_debug</TargetName>
+    <LinkIncremental>true</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_debug</TargetName>
+    <LinkIncremental>true</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\include;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui audio;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui audio\amd64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui audio\ia64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui audio\license;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui audio\license\libusb-win32;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui audio\x86;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui camera;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui camera\amd64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui camera\ia64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui camera\license;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui camera\license\libusb-win32;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui camera\x86;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui motor;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui motor\amd64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui motor\ia64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui motor\license;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui motor\license\libusb-win32;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui motor\x86;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-1.0;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\include;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\lib;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\lib\vs;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\lib\vs\Win32;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\lib\vs\x64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\license;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\src\extra;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxRSSDKv2\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxTimer\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxXmlSettings\libs;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxXmlSettings\src;C:\Program Files %28x86%29\Intel\RSSDK\include;C:\Program Files\Microsoft SDKs\Kinect\v2.0_1409\inc</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies);libusb.lib;libusbd.lib;C:\Program Files (x86)\Intel\RSSDK\lib\Win32\libpxc_d.lib;C:\Program Files (x86)\Intel\RSSDK\lib\Win32\libpxcmd_d.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\lib\vs\Win32</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\include;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui audio;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui audio\amd64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui audio\ia64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui audio\license;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui audio\license\libusb-win32;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui audio\x86;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui camera;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui camera\amd64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui camera\ia64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui camera\license;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui camera\license\libusb-win32;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui camera\x86;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui motor;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui motor\amd64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui motor\ia64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui motor\license;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui motor\license\libusb-win32;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui motor\x86;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-1.0;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\include;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\lib;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\lib\vs;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\lib\vs\Win32;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\lib\vs\x64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\license;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\src\extra;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxRSSDKv2\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxTimer\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxXmlSettings\libs;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxXmlSettings\src;C:\Program Files %28x86%29\Intel\RSSDK\include;C:\Program Files\Microsoft SDKs\Kinect\v2.0_1409\inc</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies);libusb.lib;libusbd.lib;C:\Program Files (x86)\Intel\RSSDK\lib\Win32\libpxc_d.lib;C:\Program Files (x86)\Intel\RSSDK\lib\Win32\libpxcmd_d.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\lib\vs\x64</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\include;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui audio;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui audio\amd64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui audio\ia64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui audio\license;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui audio\license\libusb-win32;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui audio\x86;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui camera;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui camera\amd64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui camera\ia64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui camera\license;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui camera\license\libusb-win32;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui camera\x86;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui motor;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui motor\amd64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui motor\ia64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui motor\license;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui motor\license\libusb-win32;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui motor\x86;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-1.0;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\include;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\lib;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\lib\vs;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\lib\vs\Win32;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\lib\vs\x64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\license;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\src\extra;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxRSSDKv2\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxTimer\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxXmlSettings\libs;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxXmlSettings\src;C:\Program Files %28x86%29\Intel\RSSDK\include;C:\Program Files\Microsoft SDKs\Kinect\v2.0_1409\inc</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies);libusb.lib;libusbd.lib;C:\Program Files (x86)\Intel\RSSDK\lib\Win32\libpxc_d.lib;C:\Program Files (x86)\Intel\RSSDK\lib\Win32\libpxcmd_d.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\lib\vs\Win32</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\include;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui audio;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui audio\amd64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui audio\ia64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui audio\license;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui audio\license\libusb-win32;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui audio\x86;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui camera;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui camera\amd64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui camera\ia64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui camera\license;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui camera\license\libusb-win32;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui camera\x86;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui motor;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui motor\amd64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui motor\ia64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui motor\license;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui motor\license\libusb-win32;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\inf\xbox nui motor\x86;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-1.0;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\include;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\lib;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\lib\vs;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\lib\vs\Win32;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\lib\vs\x64;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\license;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\src\extra;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxRSSDKv2\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxTimer\src;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxXmlSettings\libs;..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxXmlSettings\src;C:\Program Files %28x86%29\Intel\RSSDK\include;C:\Program Files\Microsoft SDKs\Kinect\v2.0_1409\inc</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies);libusb.lib;libusbd.lib;C:\Program Files (x86)\Intel\RSSDK\lib\Win32\libpxc_d.lib;C:\Program Files (x86)\Intel\RSSDK\lib\Win32\libpxcmd_d.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\lib\vs\x64</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\ofApp.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxBaseGui.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxButton.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxGuiGroup.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxLabel.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxPanel.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxSlider.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxSliderGroup.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxToggle.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\src\extra\ofxKinectExtras.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\src\ofxKinect.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0\failguard.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0\libusbemu.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\audio.c" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\cameras.c" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\core.c" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\flags.c" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\keep_alive.c" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\loader.c" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\registration.c" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\tilt.c" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\usb_libusb10.c" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data\Body.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data\Joint.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Device.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\BaseImage.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Body.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\BodyIndex.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Color.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Depth.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Infrared.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\LongExposureInfraRed.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Utils.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src\ofxOscBundle.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src\ofxOscMessage.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src\ofxOscParameterSync.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src\ofxOscReceiver.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src\ofxOscSender.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip\win32\NetworkingUtils.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip\win32\UdpSocket.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxRSSDKv2\src\ofxRSSDKv2.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxTimer\src\ofxTimer.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxXmlSettings\src\ofxXmlSettings.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxXmlSettings\libs\tinyxml.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxXmlSettings\libs\tinyxmlerror.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ofApp.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxBaseGui.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxButton.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxGui.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxGuiGroup.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxLabel.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxPanel.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxSlider.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxSliderGroup.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxGui\src\ofxToggle.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\src\extra\ofxKinectExtras.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\src\ofxBase3DVideo.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\src\ofxKinect.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\include\libfreenect.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\include\libfreenect_audio.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\include\libfreenect_registration.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0\failguard.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0\libusb.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0\libusbemu_internal.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0\libusbemu_threads.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\libusb10emu\libusb-1.0\libusbemu_threads_win32.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\stdbool.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\platform\windows\unistd.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\cameras.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\flags.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\freenect_internal.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\keep_alive.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\loader.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\registration.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libfreenect\src\usb_libusb10.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-1.0\include\libusb-1.0\libusb.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinect\libs\libusb-win32\include\lusb0_usb.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data\Body.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data\Joint.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Device.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Base.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\BaseImage.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Body.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\BodyIndex.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Color.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Depth.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Infrared.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\LongExposureInfrared.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Utils.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\src\ofxKinectForWindows2.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src\ofxOsc.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src\ofxOscArg.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src\ofxOscBundle.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src\ofxOscMessage.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src\ofxOscParameterSync.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src\ofxOscReceiver.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\src\ofxOscSender.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip\NetworkingUtils.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip\PacketListener.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip\TimerListener.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\ip\UdpSocket.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc\MessageMappingOscPacketListener.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc\OscException.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc\OscHostEndianness.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc\OscPacketListener.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxRSSDKv2\src\ofxRSSDKv2.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxTimer\src\ofxTimer.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxXmlSettings\src\ofxXmlSettings.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxXmlSettings\libs\tinyxml.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
+      <Project>{5837595d-aca9-485c-8e76-729040ce4b0b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\..\Softwares\openFrameworks 0.9.3\addons\ofxKinectForWindows2\ofxKinectForWindows2Lib\ofxKinectForWindows2Lib.vcxproj">
+      <Project>{f6008d6a-6d39-4b68-840e-e7ac8ed855da}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(OF_ROOT)\libs\openFrameworksCompiled\project\vs</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="icon.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
