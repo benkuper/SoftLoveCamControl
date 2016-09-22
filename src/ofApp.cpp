@@ -34,8 +34,18 @@ void ofApp::setup(){
 
 	//Kinect 2
 	k2.open();
-	k2.initDepthSource();
-	k2Mapper = k2.getDepthSource()->getCoordinateMapper();
+	ofLogNotice("Setup", "KinectV2 is Open ? %i", k2.isOpen());
+	if (k2.isOpen())
+	{
+		k2.initDepthSource();
+		k2Mapper = k2.getDepthSource()->getCoordinateMapper();
+		k2.initBodySource();
+		k2.initBodyIndexSource();
+		numBodiesTracked = 0;
+
+		k2DepthTex.allocate(K2_PCL_WIDTH, K2_PCL_HEIGHT, OF_IMAGE_COLOR);
+		k2BodyTex.allocate(K2_PCL_WIDTH, K2_PCL_HEIGHT, OF_IMAGE_COLOR);
+	}
 
 	//RealSense
 	rs = ofxRSSDK::RSDevice::createUniquePtr();
@@ -98,6 +108,7 @@ void ofApp::update(){
 		{
 			int numGoodK1Points = 0;
 			int tIndex = 0;
+			ofVec3f pclCenter;
 
 			for (int ty = 0; ty < K1_PCL_HEIGHT; ty+=k1Steps)
 			{
@@ -111,6 +122,7 @@ void ofApp::update(){
 					{
 						pclData->k1Clouds[i].points[numGoodK1Points] = p;
 						pclData->k1Clouds[i].positions[numGoodK1Points] = ty*K1_PCL_WIDTH+tx;
+						pclCenter += p;
 						numGoodK1Points++;
 					}				
 				}
@@ -118,6 +130,7 @@ void ofApp::update(){
 
 			//ofLog() << "num good k1 points : " << numGoodK1Points;
 			pclData->k1Clouds[i].numGoodPoints = numGoodK1Points;
+			pclData->k1Clouds[i].pclCenter = pclCenter / numGoodK1Points;
 		}
 		
 	}
@@ -130,31 +143,69 @@ void ofApp::update(){
 		k2.update();
 		if (k2.isFrameNew())
 		{
-			k2Depthtex = k2.getDepthSource()->getTexture();
+			k2DepthTex = k2.getDepthSource()->getTexture();
+			k2BodyTex = k2.getBodyIndexSource()->getTexture(); 
 
+			auto &bodyPixels = k2.getBodyIndexSource()->getPixels();
+			int newBodiesTracked = 0;
+			auto& bodies = k2.getBodySource()->getBodies();
+			
+			
+			for (auto& body : bodies) {
+				if (body.tracked) {
+					newBodiesTracked++;
+					
+					auto &atlas = body.getBonesAtlas();
+					pclData->k2Cloud.headPos = body.joints.at(JointType::JointType_Head).getPosition();
+					pclData->k2Cloud.leftHandPos = body.joints.at(JointType::JointType_HandLeft).getPosition();
+					pclData->k2Cloud.rightHandPos = body.joints.at(JointType::JointType_HandRight).getPosition();
+					pclData->k2Cloud.neckPos = body.joints.at(JointType::JointType_Neck).getPosition();
+					pclData->k2Cloud.torsoPos = body.joints.at(JointType::JointType_SpineBase).getPosition();
+					break;
+				}
+			}
+
+			if (newBodiesTracked != numBodiesTracked)
+			{
+				numBodiesTracked = newBodiesTracked;
+				ofLog() << "Num bodies tracked " << numBodiesTracked;
+			}
+
+			
 			if (memoryIsConnected)
 			{
 				k2Mapper->MapDepthFrameToCameraSpace(NUM_K2_PIXELS, k2.getDepthSource()->getPixels(), NUM_K2_PIXELS, reinterpret_cast<CameraSpacePoint*>(k2TmpCloud));
 
+				int numBodyPoints = 0;
 				int numGoodK2Points = 0;
+				ofVec3f pclCenter;
 				for (int k2y = 0; k2y < K2_PCL_HEIGHT; k2y += k2Steps)
 				{
 					for (int k2x = 0; k2x < K2_PCL_WIDTH; k2x += k2Steps)
 					{
 						int index = k2y*K2_PCL_WIDTH + k2x;
 
+						
 						bool isGood = !isinf(k2TmpCloud[index].x);
+						if (isGood && numBodiesTracked > 0)
+						{
+							isGood = bodyPixels[index] < 255;
+						}
+
 						if (isGood)
 						{
 							pclData->k2Cloud.positions[numGoodK2Points] = index;
 							pclData->k2Cloud.points[numGoodK2Points] = k2TmpCloud[index];
+							pclCenter += k2TmpCloud[index];
 							numGoodK2Points++;
 						}
 
 					}
 				}
-
+				
 				pclData->k2Cloud.numGoodPoints = numGoodK2Points;
+				pclData->k2Cloud.pclCenter = pclCenter/numGoodK2Points;
+				pclData->k2Cloud.numBodiesTracked = numBodiesTracked;
 			}
 		}
 	}
@@ -170,16 +221,19 @@ void ofApp::update(){
 		if (memoryIsConnected)
 		{
 			vector<ofVec3f> pc = rs->getPointCloud();
-			vector<int> ind = rs->getIndices();
+			//vector<int> ind = rs->getIndices();
+			ofVec3f pclCenter;
+
 			int numGoodRSPoints = 0;
 			int numRSPoints = pc.size();
 			for (int rsi = 0; rsi < NUM_RS_PIXELS && rsi < numRSPoints; rsi+=rsSteps)
 			{
 				pclData->rsCloud.points[numGoodRSPoints] = pc.at(rsi) / 1000.;
-				pclData->rsCloud.positions[numGoodRSPoints] = ind.at(rsi);
+				pclCenter += pclData->rsCloud.points[numGoodRSPoints];
+				//pclData->rsCloud.positions[numGoodRSPoints] = ind.at(rsi);
 				numGoodRSPoints++;
 			}
-
+			pclData->rsCloud.pclCenter = pclCenter / numGoodRSPoints;
 			pclData->rsCloud.numGoodPoints = numGoodRSPoints;
 			
 		}
@@ -217,10 +271,15 @@ void ofApp::draw(){
 	
 
 	
-	if (k2.isOpen() && k2.isFrameNew())
+	if (k2.isOpen())
 	{
 		
-		k2Depthtex.draw(imgSize * 2, 0, imgSize, imgSize);
+		k2DepthTex.draw(imgSize * 2, 0, imgSize, imgSize);
+		ofPushStyle();
+		ofSetColor(ofColor::red, 50);
+		k2BodyTex.draw(imgSize * 2, 0, imgSize, imgSize);
+		ofPopStyle();
+
 	} else
 	{
 		//ofLogNotice("Kinect2 is not open or no new frame");

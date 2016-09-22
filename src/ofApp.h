@@ -53,8 +53,13 @@ class ofApp : public ofBaseApp{
 		int k2Steps;
 		ofxKFW2::Device k2;
 		ICoordinateMapper * k2Mapper;
-		ofTexture k2Depthtex;
+		ofTexture k2DepthTex;
 		ofVec3f k2TmpCloud[NUM_K2_PIXELS];
+		
+			//K2 body
+		ofTexture k2BodyTex;
+		vector<ofVec2f> colorCoords;
+		int numBodiesTracked;
 
 		//REALSENSE
 		int rsSteps;
