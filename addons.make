@@ -3,5 +3,6 @@ ofxKinect
 ofxKinectForWindows2
 ofxOsc
 ofxRSSDKv2
+ofxSharedMemory
 ofxTimer
 ofxXmlSettings
