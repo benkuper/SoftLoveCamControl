@@ -121,21 +121,22 @@ void ofApp::update(){
 			{
 				for (int tx = 0; tx < K1_PCL_WIDTH; tx+= k1Steps)
 				{
+					int index = ty * K1_PCL_WIDTH + tx;
+					
 					ofVec3f p = k->getWorldCoordinateAt(tx*2, ty*2)*ofVec3f(1,-1,1)/1000.; //ofVec3f(tx*1./K1_PCL_WIDTH,ty*1./K1_PCL_HEIGHT,.5f);// 
-
+		
 					bool isGood = p.x != 0 && !isnan(p.x);
+					pclData->k1Clouds[i].points[index] = p;
 
 					if (isGood)
 					{
-						pclData->k1Clouds[i].points[numGoodK1Points] = p;
-						pclData->k1Clouds[i].positions[numGoodK1Points] = ty*K1_PCL_WIDTH+tx;
+						pclData->k1Clouds[i].goodPointIndices[numGoodK1Points] = index;
 						pclCenter += p;
 						numGoodK1Points++;
 					}				
 				}
 			}
 
-			//ofLog() << "num good k1 points : " << numGoodK1Points;
 			pclData->k1Clouds[i].numGoodPoints = numGoodK1Points;
 			pclData->k1Clouds[i].pclCenter = pclCenter / numGoodK1Points;
 		}
@@ -180,7 +181,7 @@ void ofApp::update(){
 					ofLog() << "Num bodies tracked " << numBodiesTracked;
 				}
 
-				k2Mapper->MapDepthFrameToCameraSpace(NUM_K2_PIXELS, k2.getDepthSource()->getPixels(), NUM_K2_PIXELS, reinterpret_cast<CameraSpacePoint*>(k2TmpCloud));
+				k2Mapper->MapDepthFrameToCameraSpace(NUM_K2_PIXELS, k2.getDepthSource()->getPixels(), NUM_K2_PIXELS, reinterpret_cast<CameraSpacePoint*>(pclData->k2Cloud.points));
 
 				int numBodyPoints = 0;
 				int numGoodK2Points = 0;
@@ -192,7 +193,6 @@ void ofApp::update(){
 					for (int k2x = 0; k2x < K2_PCL_WIDTH; k2x += k2Steps)
 					{
 						int index = k2y*K2_PCL_WIDTH + k2x;
-
 						
 						bool isGood = isK2PointGood(index);
 
@@ -201,30 +201,27 @@ void ofApp::update(){
 							int index2 = k2y*K2_PCL_WIDTH + k2x + k2Steps;
 							int index3 = (k2y+k2Steps)*K2_PCL_WIDTH + k2x + k2Steps;
 							int index4 = (k2y+k2Steps)*K2_PCL_WIDTH + k2x;
+
 							if (isK2PointGood(index2) && isK2PointGood(index3) && isK2PointGood(index4))
 							{
-								quads[numQuads*4] = k2TmpCloud[index];;
-								quads[numQuads * 4+1] = k2TmpCloud[index2];
-								quads[numQuads * 4+2] = k2TmpCloud[index3];
-								quads[numQuads * 4+3] = k2TmpCloud[index4];
-								uvs[numQuads * 4] = ofVec2f(k2x*1. / K2_PCL_WIDTH, k2y *1. / K2_PCL_HEIGHT);
-								uvs[numQuads * 4 + 1] = ofVec2f((k2x+k2Steps)*1. / K2_PCL_WIDTH,k2y*1. / K2_PCL_HEIGHT);
-								uvs[numQuads * 4 + 2] = ofVec2f((k2x + k2Steps)*1. / K2_PCL_WIDTH, (k2y + k2Steps)*1. / K2_PCL_HEIGHT);
-								uvs[numQuads * 4 + 3] = ofVec2f(k2x*1. / K2_PCL_WIDTH, (k2y + k2Steps)*1. / K2_PCL_HEIGHT);
+								pclData->k2Cloud.quadIndices[numQuads*4] = index;
+								pclData->k2Cloud.quadIndices[numQuads * 4+1] = index2;
+								pclData->k2Cloud.quadIndices[numQuads * 4+2] = index3;
+								pclData->k2Cloud.quadIndices[numQuads * 4+3] = index4;
 								numQuads++;
 							}
-							
-							pclData->k2Cloud.positions[numGoodK2Points] = index;
-							pclData->k2Cloud.points[numGoodK2Points] = k2TmpCloud[index];
-							pclCenter += k2TmpCloud[index];
+
+							pclData->k2Cloud.goodPointIndices[numGoodK2Points] = index;
+							pclCenter += pclData->k2Cloud.points[index];
 							numGoodK2Points++;
+						}
+						else
+						{
+							pclData->k2Cloud.points[index] = ofVec3f();
 						}
 
 					}
 				}
-				
-				memcpy(pclData->k2Cloud.uvs, uvs, numQuads * 4 * sizeof(ofVec2f));
-				memcpy(pclData->k2Cloud.quads, quads, numQuads * 4 * sizeof(ofVec3f));
 				
 
 				pclData->k2Cloud.numGoodPoints = numGoodK2Points;
@@ -232,7 +229,6 @@ void ofApp::update(){
 				pclData->k2Cloud.numBodiesTracked = numBodiesTracked;
 				pclData->k2Cloud.numQuads = numQuads;
 
-				//ofLog() << "num quads :" << numQuads;
 			}
 		}
 	}
@@ -257,7 +253,7 @@ void ofApp::update(){
 			{
 				pclData->rsCloud.points[numGoodRSPoints] = pc.at(rsi) / 1000.;
 				pclCenter += pclData->rsCloud.points[numGoodRSPoints];
-				//pclData->rsCloud.positions[numGoodRSPoints] = ind.at(rsi);
+				pclData->rsCloud.goodPointIndices[numGoodRSPoints] = rsi;//rsi.at(rsi);
 				numGoodRSPoints++;
 			}
 			pclData->rsCloud.pclCenter = pclCenter / numGoodRSPoints;
@@ -277,7 +273,7 @@ void ofApp::update(){
 
 bool ofApp::isK2PointGood(int pIndex)
 {
-	bool result = !isinf(k2TmpCloud[pIndex].x);
+	bool result = !isinf(pclData->k2Cloud.points[pIndex].x);
 	if (result && numBodiesTracked > 0)
 	{
 		result = k2BodyPixels[pIndex] < 255;

@@ -23,7 +23,7 @@ struct RSCloud
 	int numGoodPoints;
 	ofVec3f pclCenter;
 	ofVec3f points[NUM_RS_PIXELS];
-	int positions[NUM_RS_PIXELS];
+	int goodPointIndices[NUM_RS_PIXELS];
 
 };
 
@@ -32,7 +32,7 @@ struct K1Cloud
 	int numGoodPoints;
 	ofVec3f pclCenter;
 	ofVec3f points[NUM_K1_PIXELS];
-	int positions[NUM_K1_PIXELS];
+	int goodPointIndices[NUM_K1_PIXELS];
 };
 
 struct K2Cloud
@@ -48,10 +48,8 @@ struct K2Cloud
 	ofVec3f torsoPos;
 	
 	ofVec3f points[NUM_K2_PIXELS];
-	int positions[NUM_K2_PIXELS];
-
-	ofVec3f quads[NUM_K2_PIXELS * 4];
-	ofVec2f uvs[NUM_K2_PIXELS * 4];
+	int goodPointIndices[NUM_K2_PIXELS];
+	int quadIndices[NUM_K2_PIXELS * 4];
 	int numQuads;
 };
 

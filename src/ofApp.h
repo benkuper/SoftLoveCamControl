@@ -54,9 +54,6 @@ class ofApp : public ofBaseApp{
 		ofxKFW2::Device k2;
 		ICoordinateMapper * k2Mapper;
 		ofTexture k2DepthTex;
-		ofVec3f k2TmpCloud[NUM_K2_PIXELS];
-		ofVec3f quads[NUM_K2_PIXELS * 4];
-		ofVec2f uvs[NUM_K2_PIXELS * 4];
 
 			//K2 body
 		ofTexture k2BodyTex;
