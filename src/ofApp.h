@@ -55,11 +55,16 @@ class ofApp : public ofBaseApp{
 		ICoordinateMapper * k2Mapper;
 		ofTexture k2DepthTex;
 		ofVec3f k2TmpCloud[NUM_K2_PIXELS];
-		
+		ofVec3f quads[NUM_K2_PIXELS * 4];
+		ofVec2f uvs[NUM_K2_PIXELS * 4];
+
 			//K2 body
 		ofTexture k2BodyTex;
-		vector<ofVec2f> colorCoords;
+		ofPixels k2BodyPixels;
 		int numBodiesTracked;
+
+		bool isK2PointGood(int pIndex);
+		
 
 		//REALSENSE
 		int rsSteps;
@@ -74,10 +79,14 @@ class ofApp : public ofBaseApp{
 		string memoryKey = "SoftLovePCL";
 		int memorySize = sizeof(PCLData);
 		bool memoryIsConnected = false;
+		std::mutex mtx;
 
 		//OSC
 		int port = 6001;
 		ofxOscReceiver oscReceiver;
 		void processOSC();
+
+
+
 
 };

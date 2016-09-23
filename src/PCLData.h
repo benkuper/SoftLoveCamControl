@@ -46,14 +46,19 @@ struct K2Cloud
 	ofVec3f rightHandPos;
 	ofVec3f neckPos;
 	ofVec3f torsoPos;
-
+	
 	ofVec3f points[NUM_K2_PIXELS];
 	int positions[NUM_K2_PIXELS];
+
+	ofVec3f quads[NUM_K2_PIXELS * 4];
+	ofVec2f uvs[NUM_K2_PIXELS * 4];
+	int numQuads;
 };
 
 
 
 struct PCLData {
+	bool isReady;
 	K1Cloud k1Clouds[NUM_KINECTS1];
 	K2Cloud k2Cloud;
 	RSCloud rsCloud;

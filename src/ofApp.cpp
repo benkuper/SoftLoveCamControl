@@ -4,6 +4,7 @@
 void ofApp::setup(){
 
 	ofSetWindowShape(600,400);
+	ofSetFrameRate(60);
 
 	// PCL DATA & MEMORY SHARE
 	ofLogNotice("Setup", "MemoryShare Init");
@@ -80,6 +81,7 @@ void ofApp::update(){
 
 	processOSC();
 
+
 	//MemoryMap
 	ofSetWindowTitle(ofToString("Server connected : "+ ofToString(memoryIsConnected ? "YES" : "NO") + ", FPS: " + ofToString(ofGetFrameRate())));
 
@@ -93,8 +95,13 @@ void ofApp::update(){
 			pclData = memoryMappedFile.getData();
 		}
 
-	}
+	} 
 
+	if (memoryIsConnected)
+	{
+		pclData->isReady = false;
+		mtx.lock();
+	}
 
 	//KINECT 1
 	for (int i = 0; i < NUM_KINECTS1; i++)
@@ -146,39 +153,40 @@ void ofApp::update(){
 			k2DepthTex = k2.getDepthSource()->getTexture();
 			k2BodyTex = k2.getBodyIndexSource()->getTexture(); 
 
-			auto &bodyPixels = k2.getBodyIndexSource()->getPixels();
-			int newBodiesTracked = 0;
-			auto& bodies = k2.getBodySource()->getBodies();
-			
-			
-			for (auto& body : bodies) {
-				if (body.tracked) {
-					newBodiesTracked++;
-					
-					auto &atlas = body.getBonesAtlas();
-					pclData->k2Cloud.headPos = body.joints.at(JointType::JointType_Head).getPosition();
-					pclData->k2Cloud.leftHandPos = body.joints.at(JointType::JointType_HandLeft).getPosition();
-					pclData->k2Cloud.rightHandPos = body.joints.at(JointType::JointType_HandRight).getPosition();
-					pclData->k2Cloud.neckPos = body.joints.at(JointType::JointType_Neck).getPosition();
-					pclData->k2Cloud.torsoPos = body.joints.at(JointType::JointType_SpineBase).getPosition();
-					break;
-				}
-			}
-
-			if (newBodiesTracked != numBodiesTracked)
-			{
-				numBodiesTracked = newBodiesTracked;
-				ofLog() << "Num bodies tracked " << numBodiesTracked;
-			}
-
-			
 			if (memoryIsConnected)
 			{
+				k2BodyPixels = k2.getBodyIndexSource()->getPixels();
+				int newBodiesTracked = 0;
+				auto& bodies = k2.getBodySource()->getBodies();
+			
+			
+				for (auto& body : bodies) {
+					if (body.tracked) {
+						newBodiesTracked++;
+					
+						auto &atlas = body.getBonesAtlas();
+						pclData->k2Cloud.headPos = body.joints.at(JointType::JointType_Head).getPosition();
+						pclData->k2Cloud.leftHandPos = body.joints.at(JointType::JointType_HandLeft).getPosition();
+						pclData->k2Cloud.rightHandPos = body.joints.at(JointType::JointType_HandRight).getPosition();
+						pclData->k2Cloud.neckPos = body.joints.at(JointType::JointType_Neck).getPosition();
+						pclData->k2Cloud.torsoPos = body.joints.at(JointType::JointType_SpineBase).getPosition();
+						break;
+					}
+				}
+
+				if (newBodiesTracked != numBodiesTracked)
+				{
+					numBodiesTracked = newBodiesTracked;
+					ofLog() << "Num bodies tracked " << numBodiesTracked;
+				}
+
 				k2Mapper->MapDepthFrameToCameraSpace(NUM_K2_PIXELS, k2.getDepthSource()->getPixels(), NUM_K2_PIXELS, reinterpret_cast<CameraSpacePoint*>(k2TmpCloud));
 
 				int numBodyPoints = 0;
 				int numGoodK2Points = 0;
 				ofVec3f pclCenter;
+
+				int numQuads = 0;
 				for (int k2y = 0; k2y < K2_PCL_HEIGHT; k2y += k2Steps)
 				{
 					for (int k2x = 0; k2x < K2_PCL_WIDTH; k2x += k2Steps)
@@ -186,14 +194,26 @@ void ofApp::update(){
 						int index = k2y*K2_PCL_WIDTH + k2x;
 
 						
-						bool isGood = !isinf(k2TmpCloud[index].x);
-						if (isGood && numBodiesTracked > 0)
-						{
-							isGood = bodyPixels[index] < 255;
-						}
+						bool isGood = isK2PointGood(index);
 
 						if (isGood)
 						{
+							int index2 = k2y*K2_PCL_WIDTH + k2x + k2Steps;
+							int index3 = (k2y+k2Steps)*K2_PCL_WIDTH + k2x + k2Steps;
+							int index4 = (k2y+k2Steps)*K2_PCL_WIDTH + k2x;
+							if (isK2PointGood(index2) && isK2PointGood(index3) && isK2PointGood(index4))
+							{
+								quads[numQuads*4] = k2TmpCloud[index];;
+								quads[numQuads * 4+1] = k2TmpCloud[index2];
+								quads[numQuads * 4+2] = k2TmpCloud[index3];
+								quads[numQuads * 4+3] = k2TmpCloud[index4];
+								uvs[numQuads * 4] = ofVec2f(k2x*1. / K2_PCL_WIDTH, k2y *1. / K2_PCL_HEIGHT);
+								uvs[numQuads * 4 + 1] = ofVec2f((k2x+k2Steps)*1. / K2_PCL_WIDTH,k2y*1. / K2_PCL_HEIGHT);
+								uvs[numQuads * 4 + 2] = ofVec2f((k2x + k2Steps)*1. / K2_PCL_WIDTH, (k2y + k2Steps)*1. / K2_PCL_HEIGHT);
+								uvs[numQuads * 4 + 3] = ofVec2f(k2x*1. / K2_PCL_WIDTH, (k2y + k2Steps)*1. / K2_PCL_HEIGHT);
+								numQuads++;
+							}
+							
 							pclData->k2Cloud.positions[numGoodK2Points] = index;
 							pclData->k2Cloud.points[numGoodK2Points] = k2TmpCloud[index];
 							pclCenter += k2TmpCloud[index];
@@ -203,9 +223,16 @@ void ofApp::update(){
 					}
 				}
 				
+				memcpy(pclData->k2Cloud.uvs, uvs, numQuads * 4 * sizeof(ofVec2f));
+				memcpy(pclData->k2Cloud.quads, quads, numQuads * 4 * sizeof(ofVec3f));
+				
+
 				pclData->k2Cloud.numGoodPoints = numGoodK2Points;
 				pclData->k2Cloud.pclCenter = pclCenter/numGoodK2Points;
 				pclData->k2Cloud.numBodiesTracked = numBodiesTracked;
+				pclData->k2Cloud.numQuads = numQuads;
+
+				//ofLog() << "num quads :" << numQuads;
 			}
 		}
 	}
@@ -240,7 +267,23 @@ void ofApp::update(){
 				
 	}
 
+	if (memoryIsConnected)
+	{
+		pclData->isReady = true;
+		mtx.unlock();
+	}
 	
+}
+
+bool ofApp::isK2PointGood(int pIndex)
+{
+	bool result = !isinf(k2TmpCloud[pIndex].x);
+	if (result && numBodiesTracked > 0)
+	{
+		result = k2BodyPixels[pIndex] < 255;
+	}
+
+	return result;
 }
 
 //--------------------------------------------------------------
