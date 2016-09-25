@@ -38,6 +38,7 @@ void ofApp::setup(){
 	ofLogNotice("Setup", "KinectV2 is Open ? %i", k2.isOpen());
 	if (k2.isOpen())
 	{
+		
 		k2.initDepthSource();
 		k2Mapper = k2.getDepthSource()->getCoordinateMapper();
 		k2.initBodySource();

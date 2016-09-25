@@ -24,6 +24,12 @@
 
 #include "PCLData.h"
 
+
+/*
+DISABLE / ENABLE FAILGUARD ON LIBUSB : check in  ofxKinect/libfreenect/platform/windows/libusbemu/libusbemu.cpp, commented section on line 771
+*/
+
+
 class ofApp : public ofBaseApp{
 
 	public:
