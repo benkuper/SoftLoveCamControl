@@ -1,9 +1,11 @@
+#pragma warning(push)
+#pragma warning(disable:4244 4838 4996 4267)
 #include "ofApp.h"
-
+#pragma warning(pop)
 //--------------------------------------------------------------
 void ofApp::setup(){
 
-	ofSetWindowShape(600,400);
+	ofSetWindowShape(1200,800);
 	ofSetFrameRate(60);
 
 	// PCL DATA & MEMORY SHARE
@@ -31,6 +33,8 @@ void ofApp::setup(){
 		ofLogNotice("Setup", "Opening Kinect %i, connected / deviceConnected ? %i / %i", i, k->isConnected(),ofxKinect::isDeviceConnected(i));
 		k1List.push_back(k);
 		ofSleepMillis(100);
+		k1Senders[i].init("K1-" + ofToString(i), K1_PCL_WIDTH, K1_PCL_HEIGHT);
+		
 	}
 
 	//Kinect 2
@@ -42,11 +46,18 @@ void ofApp::setup(){
 		k2.initDepthSource();
 		k2Mapper = k2.getDepthSource()->getCoordinateMapper();
 		k2.initBodySource();
+		k2.initColorSource();
+		k2.getColorSource();
 		k2.initBodyIndexSource();
 		numBodiesTracked = 0;
 
 		k2DepthTex.allocate(K2_PCL_WIDTH, K2_PCL_HEIGHT, OF_IMAGE_COLOR);
 		k2BodyTex.allocate(K2_PCL_WIDTH, K2_PCL_HEIGHT, OF_IMAGE_COLOR);
+
+		//k2ColorTex.allocate(K2_COLOR_WIDTH, K2_COLOR_HEIGHT, OF_IMAGE_COLOR);
+		k2ColorImage.allocate(K2_PCL_WIDTH, K2_PCL_HEIGHT, OF_IMAGE_COLOR);
+
+		k2Sender.init("SoftLoveK2", K2_PCL_WIDTH, K2_PCL_HEIGHT);
 	}
 
 	//RealSense
@@ -75,6 +86,11 @@ void ofApp::setup(){
 	k2Steps = 4;
 	rsSteps = 4;
 	
+	for (int i = 0; i < NUM_KINECTS1; i++) freezeK1[i] = false;
+	freezeK2 = false;
+	freezeRS = false;
+
+	doDraw = true;
 }
 
 //--------------------------------------------------------------
@@ -112,7 +128,7 @@ void ofApp::update(){
 
 		k->update();
 		
-		if (memoryIsConnected)
+		if (memoryIsConnected && !freezeK1[i])
 		{
 			int numGoodK1Points = 0;
 			int tIndex = 0;
@@ -138,6 +154,8 @@ void ofApp::update(){
 				}
 			}
 
+			k1Senders[i].send(k->getTexture());
+
 			pclData->k1Clouds[i].numGoodPoints = numGoodK1Points;
 			pclData->k1Clouds[i].pclCenter = pclCenter / numGoodK1Points;
 		}
@@ -146,11 +164,10 @@ void ofApp::update(){
 
 
 	// KINECT 2
-	
 	if (k2.isOpen())
 	{
 		k2.update();
-		if (k2.isFrameNew())
+		if (k2.isFrameNew() && !freezeK2)
 		{
 			k2DepthTex = k2.getDepthSource()->getTexture();
 			k2BodyTex = k2.getBodyIndexSource()->getTexture(); 
@@ -182,53 +199,81 @@ void ofApp::update(){
 					ofLog() << "Num bodies tracked " << numBodiesTracked;
 				}
 
-				k2Mapper->MapDepthFrameToCameraSpace(NUM_K2_PIXELS, k2.getDepthSource()->getPixels(), NUM_K2_PIXELS, reinterpret_cast<CameraSpacePoint*>(pclData->k2Cloud.points));
+				
+				k2Mapper->MapDepthFrameToCameraSpace(NUM_K2_PIXELS,k2.getDepthSource()->getPixels().begin() , NUM_K2_PIXELS, reinterpret_cast<CameraSpacePoint*>(pclData->k2Cloud.points));
+				
+				
+				auto &colorPixels = k2.getColorSource()->getPixels();				
+				//ofLogNotice(ofToString(colorPixels.getWidth()) + " / " + ofToString(colorPixels.getHeight()));
+
+				k2Mapper->MapDepthFrameToColorSpace(NUM_K2_PIXELS, k2.getDepthSource()->getPixels().begin(), NUM_K2_PIXELS, colorIndices);
 
 				int numBodyPoints = 0;
 				int numGoodK2Points = 0;
 				ofVec3f pclCenter;
 
 				int numQuads = 0;
-				for (int k2y = 0; k2y < K2_PCL_HEIGHT; k2y += k2Steps)
+				
+				
+				if (colorPixels.size() != 0)
 				{
-					for (int k2x = 0; k2x < K2_PCL_WIDTH; k2x += k2Steps)
+					for (int k2y = 0; k2y < K2_PCL_HEIGHT; k2y++)
 					{
-						int index = k2y*K2_PCL_WIDTH + k2x;
-						
-						bool isGood = isK2PointGood(index);
-
-						if (isGood)
+						for (int k2x = 0; k2x < K2_PCL_WIDTH; k2x++)
 						{
-							int index2 = k2y*K2_PCL_WIDTH + k2x + k2Steps;
-							int index3 = (k2y+k2Steps)*K2_PCL_WIDTH + k2x + k2Steps;
-							int index4 = (k2y+k2Steps)*K2_PCL_WIDTH + k2x;
-
-							if (isK2PointGood(index2) && isK2PointGood(index3) && isK2PointGood(index4))
+							
+							int index = k2y*K2_PCL_WIDTH + k2x;
+							ofVec2f mappedCoord(floor(colorIndices[index].X), floor(colorIndices[index].Y));
+							if (mappedCoord.x > 0 && mappedCoord.y > 0 && mappedCoord.x < K2_COLOR_WIDTH && mappedCoord.y < K2_COLOR_HEIGHT)
 							{
-								pclData->k2Cloud.quadIndices[numQuads*4] = index;
-								pclData->k2Cloud.quadIndices[numQuads * 4+1] = index2;
-								pclData->k2Cloud.quadIndices[numQuads * 4+2] = index3;
-								pclData->k2Cloud.quadIndices[numQuads * 4+3] = index4;
-								numQuads++;
+								//ofLogNotice(ofToString(mappedCoord.x) + " / " + ofToString(mappedCoord.y));
+								k2ColorImage.setColor(k2x, k2y, colorPixels.getColor(mappedCoord.x, mappedCoord.y));
+							}
+							
+
+							if (k2x % k2Steps != 0 || k2y % k2Steps != 0) continue;
+
+
+							bool isGood = isK2PointGood(index);
+
+							if (isGood)
+							{
+								int index2 = k2y*K2_PCL_WIDTH + k2x + k2Steps;
+								int index3 = (k2y + k2Steps)*K2_PCL_WIDTH + k2x + k2Steps;
+								int index4 = (k2y + k2Steps)*K2_PCL_WIDTH + k2x;
+
+								if (isK2PointGood(index2) && isK2PointGood(index3) && isK2PointGood(index4))
+								{
+									pclData->k2Cloud.quadIndices[numQuads * 4] = index;
+									pclData->k2Cloud.quadIndices[numQuads * 4 + 1] = index2;
+									pclData->k2Cloud.quadIndices[numQuads * 4 + 2] = index3;
+									pclData->k2Cloud.quadIndices[numQuads * 4 + 3] = index4;
+									numQuads++;
+								}
+
+								pclData->k2Cloud.goodPointIndices[numGoodK2Points] = index;
+								pclCenter += pclData->k2Cloud.points[index];
+								numGoodK2Points++;
+
+
+							} else
+							{
+								pclData->k2Cloud.points[index] = ofVec3f();
 							}
 
-							pclData->k2Cloud.goodPointIndices[numGoodK2Points] = index;
-							pclCenter += pclData->k2Cloud.points[index];
-							numGoodK2Points++;
 						}
-						else
-						{
-							pclData->k2Cloud.points[index] = ofVec3f();
-						}
-
 					}
-				}
-				
 
-				pclData->k2Cloud.numGoodPoints = numGoodK2Points;
-				pclData->k2Cloud.pclCenter = pclCenter/numGoodK2Points;
-				pclData->k2Cloud.numBodiesTracked = numBodiesTracked;
-				pclData->k2Cloud.numQuads = numQuads;
+					k2ColorImage.update();
+					//k2ColorTex = k2.getColorSource()->getTexture();			
+					//if(k2ColorTex.getWidth() > 0 && k2ColorTex.getHeight() > 0)
+					k2Sender.send(k2ColorImage.getTexture());
+
+					pclData->k2Cloud.numGoodPoints = numGoodK2Points;
+					pclData->k2Cloud.pclCenter = pclCenter / numGoodK2Points;
+					pclData->k2Cloud.numBodiesTracked = numBodiesTracked;
+					pclData->k2Cloud.numQuads = numQuads;
+				}
 
 			}
 		}
@@ -242,7 +287,7 @@ void ofApp::update(){
 		rs->update();
 		rsDepthTex.loadData(rs->getDepth8uFrame());
 
-		if (memoryIsConnected)
+		if (memoryIsConnected && !freezeRS)
 		{
 			vector<ofVec3f> pc = rs->getPointCloud();
 			//vector<int> ind = rs->getIndices();
@@ -293,49 +338,88 @@ void ofApp::draw(){
 	int imgSize = ofGetWidth()/3;
 
 	
-	for (int i = 0; i < NUM_KINECTS1; i++)
+	if (doDraw)
 	{
-		ofxKinect * k = k1List[i];
-
-		bool kIsConnected = ofxKinect::isDeviceConnected(i) && k->isConnected();
-		if (kIsConnected)
+		for (int i = 0; i < NUM_KINECTS1; i++)
 		{
+			ofPushStyle();
+			ofSetColor(ofColor::white);
+			ofxKinect * k = k1List[i];
+
+			bool kIsConnected = ofxKinect::isDeviceConnected(i) && k->isConnected();
 			float tx = i % 2;
 			float ty = floor(i / 2);
-			k->drawDepth(ofRectangle(tx*imgSize, ty*imgSize, imgSize, imgSize));
+
+			if (kIsConnected)
+			{
+				k->drawDepth(ofRectangle(tx*imgSize, ty*imgSize, imgSize, imgSize));
+			} else
+			{
+				ofSetColor(ofColor::purple, 100);
+				ofDrawRectangle(tx*imgSize, ty*imgSize, imgSize, imgSize);
+			}
+
+			if (freezeK1[i])
+			{
+				ofSetColor(ofColor::red, 100);
+				ofDrawRectangle(tx*imgSize, ty*imgSize, imgSize, imgSize);
+			}
+			ofPopStyle();
+
+		}
+		
+		if (k2.isOpen())
+		{
+			
+			ofPushStyle();
+
+			ofSetColor(ofColor::white);
+			k2ColorImage.draw(imgSize * 2, 0, imgSize, imgSize);
+
+			/*
+			ofSetColor(ofColor::white, 30);
+			k2DepthTex.draw(imgSize * 2, 0, imgSize, imgSize);
+			*/
+
+			if (numBodiesTracked > 0)
+			{
+				ofSetColor(ofColor::red, 50);
+				k2BodyTex.draw(imgSize * 2, 0, imgSize, imgSize);
+			}
+
+			
+			if (freezeK2)
+			{
+				ofSetColor(ofColor::red, 100);
+				ofDrawRectangle(imgSize * 2, 0, imgSize, imgSize);
+			}
+
+			ofPopStyle();
+
+		}
+		
+
+		if (rsIsInit && rsIsStarted)
+		{
+			rsDepthTex.draw(imgSize, imgSize, imgSize, imgSize);
 		} else
 		{
-			//ofLogNotice("Kinect " + ofToString(i) + " is not connected, not drawing.");
+			ofSetColor(ofColor::purple, 100);
+			ofDrawRectangle(imgSize, imgSize, imgSize, imgSize);
 		}
+
+		if (freezeRS)
+		{
+			ofSetColor(ofColor::red, 100);
+			ofDrawRectangle(imgSize, imgSize, imgSize, imgSize);
+		}
+
 	}
-	
-
-	
-	if (k2.isOpen())
-	{
-		
-		k2DepthTex.draw(imgSize * 2, 0, imgSize, imgSize);
-		ofPushStyle();
-		ofSetColor(ofColor::red, 50);
-		k2BodyTex.draw(imgSize * 2, 0, imgSize, imgSize);
-		ofPopStyle();
-
-	} else
-	{
-		//ofLogNotice("Kinect2 is not open or no new frame");
-	}
-
-
-	if (rsIsInit && rsIsStarted)
-	{
-		rsDepthTex.draw(imgSize, imgSize, imgSize, imgSize);
-	}
-
 	
 	ofDrawBitmapStringHighlight("FPS : " + ofToString(ofGetFrameRate()), 10, 10);
-	ofDrawBitmapStringHighlight("Kinect 1 Steps : " + ofToString(k1Steps), 10, 20);
-	ofDrawBitmapStringHighlight("Kinect 2 Steps : " + ofToString(k2Steps), 10, 40);
-	ofDrawBitmapStringHighlight("RealSense Steps : " + ofToString(rsSteps), 10, 60);
+	ofDrawBitmapStringHighlight("Kinect 1 Steps : " + ofToString(k1Steps), 10, 30);
+	ofDrawBitmapStringHighlight("Kinect 2 Steps : " + ofToString(k2Steps), 10, 50);
+	ofDrawBitmapStringHighlight("RealSense Steps : " + ofToString(rsSteps), 10, 70);
 }
 
 void ofApp::exit()
@@ -351,6 +435,7 @@ void ofApp::exit()
 
 		delete k1List[i];
 	}
+	
 	if (k2.isOpen())
 	{
 		k2.close();
@@ -384,7 +469,37 @@ void ofApp::processOSC()
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+	switch (key)
+	{
+	case '1':
+		if (NUM_KINECTS1 >= 1) freezeK1[0] = !freezeK1[0];
+		
+		break;
 
+	case '2':
+		if (NUM_KINECTS1 >= 2) freezeK1[1] = !freezeK1[1];
+		break;
+
+	case '3':
+		freezeK2 = !freezeK2;
+		break;
+
+	case '4':
+		if (NUM_KINECTS1 >= 3) freezeK1[2] = !freezeK1[2];
+		break;
+
+	case '5':
+		freezeRS = !freezeRS;
+		break;
+
+	case '6':
+		if (NUM_KINECTS1 >= 4) freezeK1[3] = !freezeK1[3];
+		break;
+
+	case 'd':
+		doDraw = !doDraw;
+		break;
+	}
 }
 
 //--------------------------------------------------------------

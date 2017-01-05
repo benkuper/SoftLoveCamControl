@@ -8,6 +8,7 @@
 #include "ofxSharedMemory.h"
 
 #include "ofxOsc.h"
+#include "ofxSpout.h"
 
 #define NUM_KINECTS1 3
 
@@ -17,6 +18,9 @@
 #define K2_PCL_HEIGHT 424
 #define RS_PCL_WIDTH 640
 #define RS_PCL_HEIGHT 480
+
+#define K2_COLOR_WIDTH 1920
+#define K2_COLOR_HEIGHT 1080
 
 #define NUM_K1_PIXELS K1_PCL_WIDTH*K1_PCL_HEIGHT
 #define NUM_K2_PIXELS K2_PCL_WIDTH*K2_PCL_HEIGHT
@@ -51,15 +55,26 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
+
+		//UI
+		bool doDraw;
+
 		//KINECTS 1
 		int k1Steps;
 		vector<ofxKinect *> k1List;
+		bool freezeK1[NUM_KINECTS1];
+		ofxSpout::Sender k1Senders[NUM_KINECTS1];
 
 		//KINECT 2
 		int k2Steps;
 		ofxKFW2::Device k2;
 		ICoordinateMapper * k2Mapper;
 		ofTexture k2DepthTex;
+		ofTexture k2ColorTex;
+		ofImage  k2ColorImage;
+		ColorSpacePoint colorIndices[NUM_K2_PIXELS];
+		bool freezeK2;
+		ofxSpout::Sender k2Sender;
 
 			//K2 body
 		ofTexture k2BodyTex;
@@ -75,6 +90,7 @@ class ofApp : public ofBaseApp{
 		bool rsIsInit;
 		bool rsIsStarted; 
 		ofTexture rsDepthTex;
+		bool freezeRS;
 
 		//PCL DATA & MEMORY SHARE
 		PCLData * pclData; 
