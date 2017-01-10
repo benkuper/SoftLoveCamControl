@@ -65,6 +65,9 @@ class ofApp : public ofBaseApp{
 		bool freezeK1[NUM_KINECTS1];
 		ofxSpout::Sender k1Senders[NUM_KINECTS1];
 
+		bool isK1PointGood(int kinectIndex, int pIndex);
+
+
 		//KINECT 2
 		int k2Steps;
 		ofxKFW2::Device k2;

@@ -28,7 +28,7 @@ void ofApp::setup(){
 	{
 		ofxKinect * k = new ofxKinect();
 		k->setRegistration(true);
-		bool initResult = k->init(true,true,true);
+		bool initResult = k->init(false,true,true);
 		k->open(i);
 		ofLogNotice("Setup", "Opening Kinect %i, connected / deviceConnected ? %i / %i", i, k->isConnected(),ofxKinect::isDeviceConnected(i));
 		k1List.push_back(k);
@@ -56,7 +56,6 @@ void ofApp::setup(){
 
 		//k2ColorTex.allocate(K2_COLOR_WIDTH, K2_COLOR_HEIGHT, OF_IMAGE_COLOR);
 		k2ColorImage.allocate(K2_PCL_WIDTH, K2_PCL_HEIGHT, OF_IMAGE_COLOR);
-
 		k2Sender.init("SoftLoveK2", K2_PCL_WIDTH, K2_PCL_HEIGHT);
 	}
 
@@ -130,6 +129,7 @@ void ofApp::update(){
 		
 		if (memoryIsConnected && !freezeK1[i])
 		{
+			int numQuads = 0;
 			int numGoodK1Points = 0;
 			int tIndex = 0;
 			ofVec3f pclCenter;
@@ -150,6 +150,20 @@ void ofApp::update(){
 						pclData->k1Clouds[i].goodPointIndices[numGoodK1Points] = index;
 						pclCenter += p;
 						numGoodK1Points++;
+
+
+						int index2 = ty*K1_PCL_WIDTH + tx + k1Steps;
+						int index3 = (ty + k1Steps)*K1_PCL_WIDTH + tx + k1Steps;
+						int index4 = (ty + k1Steps)*K1_PCL_WIDTH + tx;
+
+						if (isK1PointGood(i,index2) && isK1PointGood(i,index3) && isK1PointGood(i,index4))
+						{
+							pclData->k1Clouds[i].quadIndices[numQuads * 4] = index;
+							pclData->k1Clouds[i].quadIndices[numQuads * 4 + 1] = index2;
+							pclData->k1Clouds[i].quadIndices[numQuads * 4 + 2] = index3;
+							pclData->k1Clouds[i].quadIndices[numQuads * 4 + 3] = index4;
+							numQuads++;
+						}
 					}				
 				}
 			}
@@ -158,7 +172,9 @@ void ofApp::update(){
 
 			pclData->k1Clouds[i].numGoodPoints = numGoodK1Points;
 			pclData->k1Clouds[i].pclCenter = pclCenter / numGoodK1Points;
+			pclData->k1Clouds[i].numQuads = numQuads;
 		}
+		
 		
 	}
 
@@ -317,6 +333,12 @@ void ofApp::update(){
 	
 }
 
+
+bool ofApp::isK1PointGood(int kinectIndex, int pIndex)
+{
+	return  pclData->k1Clouds[kinectIndex].points[pIndex].x != 0 && !isnan(pclData->k1Clouds[kinectIndex].points[pIndex].x);;
+}
+
 bool ofApp::isK2PointGood(int pIndex)
 {
 	bool result = !isinf(pclData->k2Cloud.points[pIndex].x);
@@ -352,7 +374,10 @@ void ofApp::draw(){
 
 			if (kIsConnected)
 			{
+				k->draw(ofRectangle(tx*imgSize, ty*imgSize, imgSize, imgSize));
+				ofSetColor(ofColor::green, 100);
 				k->drawDepth(ofRectangle(tx*imgSize, ty*imgSize, imgSize, imgSize));
+				
 			} else
 			{
 				ofSetColor(ofColor::purple, 100);
@@ -499,6 +524,20 @@ void ofApp::keyPressed(int key){
 	case 'd':
 		doDraw = !doDraw;
 		break;
+
+	case '+':
+		k1Steps++;
+		break;
+	case '-':
+		k1Steps = max(k1Steps - 1, 1);
+		break;
+
+	case '*':
+		k2Steps++;
+		break;
+	case '/':
+		k2Steps = max(k2Steps - 1, 1);
+		break;
 	}
 }
 
@@ -546,6 +585,7 @@ void ofApp::windowResized(int w, int h){
 void ofApp::gotMessage(ofMessage msg){
 
 }
+
 
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){ 

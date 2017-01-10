@@ -33,6 +33,8 @@ struct K1Cloud
 	ofVec3f pclCenter;
 	ofVec3f points[NUM_K1_PIXELS];
 	int goodPointIndices[NUM_K1_PIXELS];
+	int quadIndices[NUM_K1_PIXELS * 4];
+	int numQuads;
 };
 
 struct K2Cloud
